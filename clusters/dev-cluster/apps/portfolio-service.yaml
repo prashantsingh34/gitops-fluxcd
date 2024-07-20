@@ -7,7 +7,7 @@ spec:
   interval: 1m0s
   chart:
     spec:
-      chart: ./portfolio-service  # Path to the Helm chart within your Git repository
+      chart: ./charts/portfolio-service  # Path to the Helm chart within your Git repository
       sourceRef:
         kind: GitRepository
         name: helm-charts-services
