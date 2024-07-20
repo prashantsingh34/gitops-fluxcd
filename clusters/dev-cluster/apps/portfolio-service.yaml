@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: my-release
+  name: portfolio-service
   namespace: default
 spec:
   interval: 1m0s
