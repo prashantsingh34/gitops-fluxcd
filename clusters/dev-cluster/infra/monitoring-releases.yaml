@@ -1,4 +1,3 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -11,7 +10,7 @@ spec:
       chart: prometheus
       sourceRef:
         kind: HelmRepository
-        name: bitnami
+        name: prometheus-community
         namespace: flux-system
   values:
     server:
@@ -30,7 +29,7 @@ spec:
       chart: grafana
       sourceRef:
         kind: HelmRepository
-        name: bitnami
+        name: grafana
         namespace: flux-system
   values:
     service:
