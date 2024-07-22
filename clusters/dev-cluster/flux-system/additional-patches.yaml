@@ -8,3 +8,78 @@ spec:
   ref:
     branch: main
   url: https://github.com/prashantsingh34/helm-charts.git
+
+
+apiVersion: v1
+data:
+  token: eG94Yi03NDY2OTU5NjUzMzc3LTc0NjAxNDUxNjYxOTQtUGJyTmN5d0p1dGt3a0lyVVg4QXc2ejlhCg==
+kind: Secret
+metadata:
+  name: slack-bot-token
+  namespace: flux-system
+type: Opaque
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta2
+kind: Provider
+metadata:
+  name: slack-bot
+  namespace: flux-system
+spec:
+  type: slack
+  channel: 
+  address: https://slack.com/api/chat.postMessage
+  secretRef: gitops
+    name: slack-bot-token
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta2
+kind: Alert
+metadata:
+  name: slack-alert-infos
+  namespace: flux-system
+spec:
+  summary: "flux alert"
+  providerRef:
+    name: slack-bot
+  eventSeverity: info
+  eventSources:
+    - kind: GitRepository
+      name: '*'
+    - kind: Kustomization
+      name: '*'
+    - kind: HelmRelease
+      name: "*"
+    - kind: HelmChart
+      name: "*"
+    - kind: ImageRepository
+      name: "*"
+    - kind: ImagePolicy
+      name: "*"
+    - kind: ImageUpdateAutomation
+      name: "*"
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta2
+kind: Alert
+metadata:
+  name: slack-alert-errors
+  namespace: flux-system
+spec:
+  summary: "flux alert"
+  providerRef:
+    name: slack-bot
+  eventSeverity: error
+  eventSources:
+    - kind: GitRepository
+      name: '*'
+    - kind: Kustomization
+      name: '*'
+    - kind: HelmRelease
+      name: "*"
+    - kind: HelmChart
+      name: "*"
+    - kind: ImageRepository
+      name: "*"
+    - kind: ImagePolicy
+      name: "*"
+    - kind: ImageUpdateAutomation
+      name: "*"
+---
