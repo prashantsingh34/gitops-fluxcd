@@ -8,7 +8,7 @@ spec:
   ref:
     branch: main
   url: https://github.com/prashantsingh34/helm-charts.git
-
+---
 
 apiVersion: v1
 data:
