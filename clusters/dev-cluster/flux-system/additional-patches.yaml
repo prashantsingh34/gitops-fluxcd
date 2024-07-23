@@ -7,7 +7,9 @@ spec:
   interval: 1m0s
   ref:
     branch: main
-  url: https://github.com/prashantsingh34/helm-charts.git
+  secretRef:
+    name: git-charts-secret  
+  url: ssh://git@github.com/prashantsingh34/helm-charts.git
 ---
 
 apiVersion: v1
