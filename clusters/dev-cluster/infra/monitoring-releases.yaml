@@ -37,4 +37,4 @@ spec:
     dashboards:
       default:
         my-dashboard:
-          file: dashboards/cluster.json
+          file: ./clusters/dev-cluster/dashboards/cluster.json
