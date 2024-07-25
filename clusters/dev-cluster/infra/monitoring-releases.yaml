@@ -34,7 +34,3 @@ spec:
   values:
     service:
       type: ClusterIP
-    dashboards:
-      default:
-        my-dashboard:
-          file: ./clusters/dev-cluster/dashboards/cluster.json
