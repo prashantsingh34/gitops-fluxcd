@@ -13,25 +13,21 @@ spec:
   interval: 24h
   url: https://kubernetes.github.io/ingress-nginx
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: ingress-nginx
   namespace: ingress-nginx
 spec:
-  interval: 30m
+  interval: 1h0m0s
   chart:
     spec:
       chart: ingress-nginx
-      version: "*"
       sourceRef:
         kind: HelmRepository
         name: ingress-nginx
-        namespace: ingress-nginx
-      interval: 12h
+        namespace: flux-system
   values:
     controller:
       service:
-        type: "NodePort"
-    admissionWebhooks:
-      enabled: false
+        type: NodePort
