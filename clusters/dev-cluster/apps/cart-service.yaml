@@ -13,3 +13,8 @@ spec:
         name: helm-charts-services
         namespace: flux-system
       interval: 1m0s  # Specify any Helm chart values here.
+  values:
+    service:
+      replicaCount: 1
+      image:
+        registry: index.docker.io
