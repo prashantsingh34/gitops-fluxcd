@@ -85,41 +85,41 @@ spec:
     - kind: ImageUpdateAutomation
       name: "*"
 ---
-apiVersion: image.toolkit.fluxcd.io/v1beta1
-kind: ImageUpdateAutomation
-metadata:
-  name: flux-image-automate
-  namespace: flux-system
-spec:
-  interval: 1m
-  update:
-    path: ./releases/uat
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-    namespace: flux-system
-  git:
-    commit:
-      author:
-        name: Flux Automate Bot
-        email: prashantsingh830@gmail.com
-      messageTemplate: |
-        Automated image update by Flux
+# apiVersion: image.toolkit.fluxcd.io/v1beta1
+# kind: ImageUpdateAutomation
+# metadata:
+#   name: flux-image-automate
+#   namespace: flux-system
+# spec:
+#   interval: 1m
+#   update:
+#     path: ./releases/uat
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#     namespace: flux-system
+#   git:
+#     commit:
+#       author:
+#         name: Flux Automate Bot
+#         email: prashantsingh830@gmail.com
+#       messageTemplate: |
+#         Automated image update by Flux
 
-        Automation name: {{ .AutomationObject }}
+#         Automation name: {{ .AutomationObject }}
 
-        Files:
-        {{ range $filename, $_ := .Updated.Files -}}
-        - {{ $filename }}
-        {{ end -}}
+#         Files:
+#         {{ range $filename, $_ := .Updated.Files -}}
+#         - {{ $filename }}
+#         {{ end -}}
 
-        Objects:
-        {{ range $resource, $_ := .Updated.Objects -}}
-        - {{ $resource.Kind }} {{ $resource.Name }}
-        {{ end -}}
+#         Objects:
+#         {{ range $resource, $_ := .Updated.Objects -}}
+#         - {{ $resource.Kind }} {{ $resource.Name }}
+#         {{ end -}}
 
-        Images:
-        {{ range .Updated.Images -}}
-        - {{.}}
-        {{ end -}}
----
+#         Images:
+#         {{ range .Updated.Images -}}
+#         - {{.}}
+#         {{ end -}}
+# ---
