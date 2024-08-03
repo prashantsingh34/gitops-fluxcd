@@ -19,17 +19,17 @@ spec:
     externalServices:
       prometheus:
         secret:
-          create: false
+          create: "false"
           name: prometheus-secret
           namespace: monitoring     
       loki:
         secret:
-          create: false
+          create: "false"
           name: loki-secret
           namespace: monitoring
       tempo:
         secret:
-          create: false
+          create: "false"
           name: tempo-secret
           namespace: monitoring
     metrics:
