@@ -61,7 +61,7 @@ spec:
       enabled: true
       opencost:
         exporter:
-          defaultClusterId: my-cluster
+          defaultClusterId: kind
         prometheus:
           external:
             url: https://prometheus-prod-43-prod-ap-south-1.grafana.net/api/prom
