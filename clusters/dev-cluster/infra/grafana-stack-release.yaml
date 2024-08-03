@@ -12,6 +12,9 @@ spec:
         kind: HelmRepository
         name: grafana-community
         namespace: flux-system
+  valuesFrom:
+    - kind: Secret
+      name: grafana-credentials
   values:
     cluster:
       name: kind
@@ -19,18 +22,42 @@ spec:
       prometheus:
         host: https://prometheus-prod-43-prod-ap-south-1.grafana.net
         basicAuth:
-          username: {{ lookup "v1" "Secret" "monitoring" "grafana-credentials" | .data.prometheus-username | b64dec }}
-          password: {{ lookup "v1" "Secret" "monitoring" "grafana-credentials" | .data.token | b64dec }}
+          username: 
+            valueFrom:
+              secretKeyFrom:
+                name: grafana-credentials
+                key: prometheus-username
+          password:
+             valueFrom:
+              secretKeyFrom:
+                name: grafana-credentials
+                key: token
       loki:
         host: https://logs-prod-028.grafana.net
         basicAuth:
-          username: {{ lookup "v1" "Secret" "monitoring" "grafana-credentials" | .data.loki-username | b64dec }}
-          password: {{ lookup "v1" "Secret" "monitoring" "grafana-credentials" | .data.token | b64dec }}
+          username: 
+            valueFrom:
+              secretKeyFrom:
+                name: grafana-credentials
+                key: loki-username
+          password:
+             valueFrom:
+              secretKeyFrom:
+                name: grafana-credentials
+                key: token
       tempo:
         host: https://tempo-prod-19-prod-ap-south-1.grafana.net:443
         basicAuth:
-          username: {{ lookup "v1" "Secret" "monitoring" "grafana-credentials" | .data.tempo-username | b64dec }}
-          password: {{ lookup "v1" "Secret" "monitoring" "grafana-credentials" | .data.token | b64dec }}
+          username: 
+            valueFrom:
+              secretKeyFrom:
+                name: grafana-credentials
+                key: tempo-username
+          password:
+             valueFrom:
+              secretKeyFrom:
+                name: grafana-credentials
+                key: token
     metrics:
       enabled: true
       alloy:
