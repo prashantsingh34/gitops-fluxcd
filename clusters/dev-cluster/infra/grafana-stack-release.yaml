@@ -12,9 +12,9 @@ spec:
         kind: HelmRepository
         name: grafana-community
         namespace: flux-system
-  valuesFrom:
-    - kind: Secret
-      name: grafana-credentials
+  # valuesFrom:
+  #   - kind: Secret
+  #     name: grafana-credentials
   values:
     cluster:
       name: kind
