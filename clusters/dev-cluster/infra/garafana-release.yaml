@@ -18,10 +18,19 @@ spec:
     externalServices:
       prometheus:
         host: https://prometheus-prod-43-prod-ap-south-1.grafana.net
+        basicAuth:
+          username: "1712723"
+          password: "to be added through secret"      
       loki:
         host: https://logs-prod-028.grafana.net
+        basicAuth:
+          username: "956262"
+          password: "to be added through secret"
       tempo:
         host: https://tempo-prod-19-prod-ap-south-1.grafana.net:443
+        basicAuth:
+          username: "950577"
+          password: "to be added through secret"
     metrics:
       enabled: true
       alloy:
