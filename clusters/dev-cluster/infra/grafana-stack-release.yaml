@@ -14,18 +14,18 @@ spec:
         namespace: flux-system
   values:
     cluster:
-      name: my-cluster
+      name: kind
     externalServices:
       prometheus:
         host: https://prometheus-prod-43-prod-ap-south-1.grafana.net
         basicAuth:
-          username: "1712723" {{ lookup "v1" "Secret" "monitoring" "grafana-credentials" | .data.prometheus-username | b64dec }}
+          username: {{ lookup "v1" "Secret" "monitoring" "grafana-credentials" | .data.prometheus-username | b64dec }}
           password: {{ lookup "v1" "Secret" "monitoring" "grafana-credentials" | .data.token | b64dec }}
       loki:
         host: https://logs-prod-028.grafana.net
         basicAuth:
-          username:  {{ lookup "v1" "Secret" "monitoring" "grafana-credentials" | .data.loki-username | b64dec }}
-          password:  {{ lookup "v1" "Secret" "monitoring" "grafana-credentials" | .data.token | b64dec }}
+          username: {{ lookup "v1" "Secret" "monitoring" "grafana-credentials" | .data.loki-username | b64dec }}
+          password: {{ lookup "v1" "Secret" "monitoring" "grafana-credentials" | .data.token | b64dec }}
       tempo:
         host: https://tempo-prod-19-prod-ap-south-1.grafana.net:443
         basicAuth:
