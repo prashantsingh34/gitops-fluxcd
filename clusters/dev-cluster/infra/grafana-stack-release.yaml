@@ -22,42 +22,15 @@ spec:
       prometheus:
         host: https://prometheus-prod-43-prod-ap-south-1.grafana.net
         basicAuth:
-          username: 
-            valueFrom:
-              secretKeyFrom:
-                name: grafana-credentials
-                key: prometheus-username
-          password:
-             valueFrom:
-              secretKeyFrom:
-                name: grafana-credentials
-                key: token
+          username: "1712723"
       loki:
         host: https://logs-prod-028.grafana.net
         basicAuth:
-          username: 
-            valueFrom:
-              secretKeyFrom:
-                name: grafana-credentials
-                key: loki-username
-          password:
-             valueFrom:
-              secretKeyFrom:
-                name: grafana-credentials
-                key: token
+          username: "956262"
       tempo:
         host: https://tempo-prod-19-prod-ap-south-1.grafana.net:443
         basicAuth:
-          username: 
-            valueFrom:
-              secretKeyFrom:
-                name: grafana-credentials
-                key: tempo-username
-          password:
-             valueFrom:
-              secretKeyFrom:
-                name: grafana-credentials
-                key: token
+          username: "950577"
     metrics:
       enabled: true
       alloy:
