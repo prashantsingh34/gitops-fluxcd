@@ -18,20 +18,20 @@ spec:
       name: my-cluster
     externalServices:
       prometheus:
-        host: https://prometheus-prod-43-prod-ap-south-1.grafana.net
-        basicAuth:
-          username: "1712723"
-          password: "to be added through secret"      
+        secret:
+          create: false
+          name: prometheus-secret
+          namespace: monitoring     
       loki:
-        host: https://logs-prod-028.grafana.net
-        basicAuth:
-          username: "956262"
-          password: "to be added through secret"
+        secret:
+          create: false
+          name: loki-secret
+          namespace: monitoring
       tempo:
-        host: https://tempo-prod-19-prod-ap-south-1.grafana.net:443
-        basicAuth:
-          username: "950577"
-          password: "to be added through secret"
+        secret:
+          create: false
+          name: tempo-secret
+          namespace: monitoring
     metrics:
       enabled: true
       alloy:
@@ -58,14 +58,6 @@ spec:
         enabled: true
       grafanaCloudMetrics:
         enabled: false
-    opencost:
-      enabled: true
-      opencost:
-        exporter:
-          defaultClusterId: my-cluster
-        prometheus:
-          external:
-            url: https://prometheus-prod-43-prod-ap-south-1.grafana.net/api/prom
     kube-state-metrics:
       enabled: true
     prometheus-node-exporter:
