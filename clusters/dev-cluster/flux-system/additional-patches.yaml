@@ -138,3 +138,14 @@ spec:
       - http01:
           ingress:
             class: nginx
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: image-reflector-controller
+  annotations:
+    iam.gke.io/gcp-service-account: <identity-name>
+target:
+  kind: ServiceAccount
+  name: image-reflector-controller
+---
