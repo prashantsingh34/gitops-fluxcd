@@ -1,0 +1,20 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cart-service
+  namespace: default
+spec:
+  interval: 1m0s
+  chart:
+    spec:
+      chart: ./charts/cart-service  # Path to the Helm chart within your Git repository
+      sourceRef:
+        kind: GitRepository
+        name: helm-charts-services
+        namespace: flux-system
+      interval: 1m0s  # Specify any Helm chart values here.
+  values:
+    service:
+      replicaCount: 1
+      image:
+        registry: index.docker.io
