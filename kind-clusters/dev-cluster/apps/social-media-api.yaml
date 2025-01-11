@@ -18,4 +18,4 @@ spec:
       replicaCount: 1
       image:
         registry: index.docker.io
-        tag: 0.0.5 # {"$imagepolicy": "flux-system:social-media-api:tag"}
+        tag: 0.0.7 # {"$imagepolicy": "flux-system:social-media-api:tag"}
